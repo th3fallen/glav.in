@@ -1,0 +1,255 @@
+@font-face {
+    font-family: 'Sansation';
+    src: url('../fonts/sansation-regular-webfont.eot');
+    src: url('../fonts/sansation-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/sansation-regular-webfont.woff') format('woff'),
+         url('../fonts/sansation-regular-webfont.ttf') format('truetype'),
+         url('../fonts/sansation-regular-webfont.svg#Sansation') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+p { margin-top: 0; }
+
+/*////////////////////////////////////////////////////////////////*/
+/* BODY                                                           */
+/*////////////////////////////////////////////////////////////////*/
+body {
+	background: #233644;
+	font-family: 'Helvetica', sans-serif;
+	font-size: 14px;
+}
+
+/*////////////////////////////////////////////////////////////////*/
+/* HEADINGS                                                       */
+/*////////////////////////////////////////////////////////////////*/
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Sansation', sans-serif;
+	font-weight: normal;
+	margin: 0 0 20px 0;
+}
+
+h1 { color: #233644; font-size: 48px; }
+
+/*////////////////////////////////////////////////////////////////*/
+/* LINKS                                                          */
+/*////////////////////////////////////////////////////////////////*/
+a, a:active, a:visited { color: #000; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/*////////////////////////////////////////////////////////////////*/
+/* HELPER CLASSES                                                 */
+/*////////////////////////////////////////////////////////////////*/
+.none { display: none; }
+.left { float: left; }
+.right { float: right; }
+.clear { clear: both; }
+.imgLeft { float: left; margin: 0 10px 10px 0; }
+.imgRight { float: right; margin: 0 0 10px 10px; }
+.imgFrame { background: #fff; border: 1px solid #ccc; padding: 3px; }
+.error, .msg { 
+	color: #fff;
+	font-weight: normal;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+.error a, .msg a {
+	color: #fff;
+	text-decoration: underline;
+} 
+.error { background: #c02f2f; }
+.msg { background: green; }
+
+/*////////////////////////////////////////////////////////////////*/
+/* RESPONSIVE STYLING                                             */
+/*////////////////////////////////////////////////////////////////*/
+
+/*/////////////////*/
+/* MOBILE PORTRAIT */
+/*/////////////////*/
+@media only screen and (min-width: 320px) {
+
+}
+/*//////////////////*/
+/* MOBILE LANDSCAPE */
+/*//////////////////*/
+@media only screen and (min-width: 480px) {
+
+}
+
+/*//////////////*/
+/* SMALL TABLET */
+/*//////////////*/
+@media only screen and (min-width: 600px) {
+
+}
+
+
+/*////////////////*/
+/* TABLET/NETBOOK */
+/*////////////////*/
+@media only screen and (min-width: 768px) { 
+
+}
+
+/*/////////////////////////////////*/
+/* LANDSCAPE TABLET/NETBOOK/LAPTOP */
+/*/////////////////////////////////*/
+@media only screen and (min-width: 1024px) { 
+
+}
+
+/*/////////*/
+/* DESKTOP */
+/*/////////*/
+@media only screen and (min-width: 1280px) { 
+
+	/**
+	*	LOGIN
+	*/
+	#login-container {
+		margin: 50px auto 0;
+		width: 460px;
+	}
+
+	#login-logo {
+		background: url("../images/login_logo.png") no-repeat;
+		height: 51px;
+		margin: 0 auto 50px;
+		width: 381px;
+	}
+
+	#login-content {
+		background: #fff;
+		margin-bottom: 20px;
+		overflow: hidden;
+		padding: 20px;
+	}
+
+	/**
+	*	Admin
+	*/
+	#admin-container {
+		margin: 30px auto 0;
+		width: 620px;
+	}
+
+	#admin-header {
+		margin-bottom: 20px;
+		overflow: hidden;
+	}
+
+	#admin-logo, #admin-logo a {
+		display: block;
+		height: 28px;
+		width: 219px;
+	}
+
+	#admin-logo {
+		background: url("../images/admin_logo.png") no-repeat;
+		float: left;
+		margin: 0;
+	}
+
+	#admin-nav { float: right; }
+		#admin-nav ul { list-style: none; }
+			#admin-nav ul li {
+				font-family: 'Sansation', sans-serif;
+				float: left;
+				margin-left: 10px;
+				text-transform: uppercase;
+			}
+			#admin-nav ul li a { color: #fff; }
+
+	#admin-content {
+		background: #fff;
+		color: #131313;
+		margin-bottom: 20px;
+		overflow: hidden;
+		padding: 20px;
+		position: relative;
+	}	 
+		#admin-content p { line-height: 1.5em; }
+
+	#create-page-btn {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+	}
+
+	footer { color: #fff; }
+		footer p { text-align: center; }
+
+	input[type="text"], 
+	input[type="email"], 
+	input[type="password"],
+	textarea {
+		background: #cdcdcd;
+		border: 0; 
+		color: #7b7b7b;
+		display: block;
+		margin: 0 0 20px; 
+		padding: 10px;
+		transition: all .5s;		 	
+	 	-moz-transition: all .5s;
+	 	-ms-transition: all .5s;
+	 	-o-transition: all .5s;	 	
+		-webkit-transition: all .5s;		 	
+		width: 100%; 
+	}
+
+	input[type="text"]:focus, 
+	input[type="email"]:focus, 
+	input[type="password"]:focus,
+	textarea:focus {
+		background: #233644;
+		color: #fff;
+		outline: none;
+	}
+
+	textarea { height: 300px; }
+
+	.btn,
+	button,
+	input[type="submit"] {
+		background: #233644;
+		border: 0;
+		color: #fff;
+		padding: 10px 20px;
+		text-transform: uppercase;
+		transition: all .5s;
+	 	-moz-transition: all .5s;
+	 	-ms-transition: all .5s;
+	 	-o-transition: all .5s;	 	
+		-webkit-transition: all .5s;		 	
+	}
+
+	.btn:hover,
+	button:hover,
+	input[type="submit"]:hover {
+		background: #1a2934;
+		text-decoration: none;
+	}
+
+	.btn:visited { color: #fff; }
+
+	#cke_page-content { margin-bottom: 20px; }
+
+	#admin-pages-list { list-style: none; margin: 0; padding: 0; }
+	#admin-pages-list li { padding: 10px; }
+	#admin-pages-list li:nth-child(odd) { background: #ddd; }
+	#admin-pages-list li:hover { background: #233644; }
+	#admin-pages-list li:hover a { color: #fff; }
+	#admin-pages-list li a { margin-right: 10px; text-transform: uppercase; }
+	#admin-pages-list li a.action-btn { font-size: 10px; font-weight: bold; }  
+
+}
+
