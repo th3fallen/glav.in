@@ -68,49 +68,7 @@ a:hover { text-decoration: underline; }
 .error { background: #c02f2f; }
 .msg { background: green; }
 
-/*////////////////////////////////////////////////////////////////*/
-/* RESPONSIVE STYLING                                             */
-/*////////////////////////////////////////////////////////////////*/
 
-/*/////////////////*/
-/* MOBILE PORTRAIT */
-/*/////////////////*/
-@media only screen and (min-width: 320px) {
-
-}
-/*//////////////////*/
-/* MOBILE LANDSCAPE */
-/*//////////////////*/
-@media only screen and (min-width: 480px) {
-
-}
-
-/*//////////////*/
-/* SMALL TABLET */
-/*//////////////*/
-@media only screen and (min-width: 600px) {
-
-}
-
-
-/*////////////////*/
-/* TABLET/NETBOOK */
-/*////////////////*/
-@media only screen and (min-width: 768px) { 
-
-}
-
-/*/////////////////////////////////*/
-/* LANDSCAPE TABLET/NETBOOK/LAPTOP */
-/*/////////////////////////////////*/
-@media only screen and (min-width: 1024px) { 
-
-}
-
-/*/////////*/
-/* DESKTOP */
-/*/////////*/
-@media only screen and (min-width: 1280px) { 
 
 	/**
 	*	LOGIN
@@ -250,6 +208,3 @@ a:hover { text-decoration: underline; }
 	#admin-pages-list li:hover a { color: #fff; }
 	#admin-pages-list li a { margin-right: 10px; text-transform: uppercase; }
 	#admin-pages-list li a.action-btn { font-size: 10px; font-weight: bold; }  
-
-}
-

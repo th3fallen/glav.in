@@ -62,13 +62,13 @@ require_once(ADMIN_DIR . '/template/login_header.php');
 
 	if(!$user->is_logged_in()) {
 	?>
-	<section id="login-form">			
+	<div id="login-content">			
 		<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 			<input type="text" placeholder="Email Address" name="email" />
 			<input type="password" placeholder="Password" name="password" />
 			<input type="submit" value="Submit">
 		</form>
-	</section><!-- end login-form -->
+	</div><!-- end login-content -->
 	<?php
 	}
 	

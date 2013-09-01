@@ -66,11 +66,7 @@ require_once(ADMIN_DIR . '/template/login_header.php');
 	{
 		echo '<div class="error">' . $errors . '</div>';
 	}
-	?>	
-	<head>
-		<title>Install Glav.in</title>
-	</head>
-	<body>
+	?>
 		<p>Please create an admin account.</p>
 		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 			<input type="email" name="admin_email_address" placeholder="Email Address" />
