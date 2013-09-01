@@ -19,9 +19,12 @@
 	</head>
 <body>
 	<body>
-		<div id="container">
+		<div id="container">			
 			<header>
 				<h1 id="logo"><a href="<?php echo base_url(); ?>" title="Home"><span class="none">Glav.in</span></a></h1>
+				<nav>
+					<?php echo pages_list(); ?>
+				</nav>
 			</header>
 			<div id="content">
 				<h1><?php echo $page['name']; ?></h1>

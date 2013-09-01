@@ -18,7 +18,7 @@
  * COMMON FUNCTIONS
  *---------------------------------------------------------------
  */
-require_once(SYSTEM_DIR . '/common.php');
+	require_once(SYSTEM_DIR . '/common.php');
 
 /*
  *---------------------------------------------------------------
@@ -39,5 +39,12 @@ require_once(SYSTEM_DIR . '/common.php');
 	// User
 	require_once(SYSTEM_DIR . 'User.php');
 	$user = new User($data);
+
+/*
+ *---------------------------------------------------------------
+ * TEMPLATE FUNCTIONS
+ *---------------------------------------------------------------
+ */
+	require_once(SYSTEM_DIR . '/template_functions.php');
 
 ?>

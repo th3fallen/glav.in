@@ -20,7 +20,7 @@ class Page {
 	/**
 	 * Construct
 	 */
-	function __construct($data) {
+	public function __construct($data) {
 		$this->data = $data;
 	}
 
@@ -55,11 +55,16 @@ class Page {
 
 		$list  = '<ul'.$id.'>';
 
+		// Make homepage first.
+		$list .= '<li>';
+		$list .= '<a href="' . base_url() .'">';
+		$list .= 'Home</a></li>';
+
 		foreach($pages as $page) {
 
 			$page_name = basename($page, '.json');
 
-			if($page_name != '404') {
+			if($page_name != '404' && $page_name != 'home') {
 				$list .= '<li>';
 				$list .= '<a href="' . base_url() . $page_name . '">';
 				$list .= ucwords(str_replace('_', ' ', $page_name));
