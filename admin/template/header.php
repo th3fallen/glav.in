@@ -27,7 +27,7 @@
 			<nav id="admin-nav">
 				<ul>
 					<li><a href="pages.php" title="Pages">Pages</a></li>
-					<li><a href="#" title="Settings">Settings</a></li>
+					<?php /* <li><a href="#" title="Settings">Settings</a></li> */ ?>
 					<li><a href="logout.php" title="Logout">Logout</a></li>
 				</ul>
 			</nav>

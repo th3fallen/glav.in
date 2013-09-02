@@ -1,4 +1,30 @@
-glav.in
+Glav.in
 =======
 
-The Not Robust, Not Very Powerful, Simple CMS
+The goal of Glav.in is to provide the most simplistic CMS experience possible. It is **not** intended for large, multifaceted websites - it just ain't got the juice. Glav.in is for simple, informational websites. Maybe a site for a local barber shop? Perhaps even a site for your cat?
+
+Features
+========
+
+* Super simple to install.
+* Open Source
+* No database. All of the pages are stored in json files.
+* It's named after a catchphrase of a character from The Simpsons.
+
+Non-Features
+============
+
+* It's not powerful, at the moment all you can do is create and edit pages.
+* It's not robust. There aren't any plug-ins or widgets.
+
+Requirements
+============
+
+* Apache
+* PHP 5.2+
+
+Notes
+=====
+
+* This project is in the **VERY** early stages. Do not use this on a production site.
+* I would absolutely love input and contributions. All advice/thoughts/ideas/criticisms are welcome. Send any email to glavincms@gmail.com
