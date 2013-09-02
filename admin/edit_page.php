@@ -71,7 +71,11 @@ if($user->is_logged_in('create_page.php'))
 		}		
 	}
 ?>
+<div id="page-description">
 <h1>Edit Page</h1>
+<p>Edit your existing page below.</p>
+</div><!-- end page-description -->
+<div id="admin-content-body">
 <?php
 foreach($msgs as $msg)
 {

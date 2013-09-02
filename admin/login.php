@@ -49,7 +49,9 @@ if($user->is_logged_in())
 }
 
 require_once(ADMIN_DIR . '/template/login_header.php'); 
-
+?>
+	<div id="login-content">
+	<?php	
 	foreach($msgs as $msg)
 	{
 		echo '<div class="msg">' . $msg . '</div>';
@@ -61,8 +63,7 @@ require_once(ADMIN_DIR . '/template/login_header.php');
 	}
 
 	if(!$user->is_logged_in()) {
-	?>
-	<div id="login-content">			
+	?>		
 		<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 			<input type="text" placeholder="Email Address" name="email" />
 			<input type="password" placeholder="Password" name="password" />

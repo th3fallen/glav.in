@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="js/respond.min.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>admin/template/js/placeMe.min.js"></script>
 	</head>
-	<body>
+	<body class="not_logged_in">
 	<div id="login-container">
 		<header>
 			<h1 id="login-logo"><span class="none">Glav.in</span></h1>

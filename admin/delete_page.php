@@ -75,7 +75,11 @@ if($user->is_logged_in('create_page.php'))
 		}
 	}
 ?>
+<div id="page-description">
 <h1>Delete Page</h1>
+<p>Deleting your page cannot be reversed. Once it's gone, it's gone. No return. No zombie pages. Gone. Seriously, make sure you want to do this.</p>
+</div><!-- end page-description -->
+<div id="admin-content-body">
 <?php
 foreach($msgs as $msg)
 {

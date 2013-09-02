@@ -64,7 +64,11 @@ if($user->is_logged_in('create_page.php'))
 
 	}
 ?>
-<h1>Create a Page</h1>
+<div id="page-description">
+<h1>Create Page</h1>
+<p>Fill out the form below to create a new page.</p>
+</div><!-- end page-description -->
+<div id="admin-content-body">
 <?php
 foreach($msgs as $msg)
 {

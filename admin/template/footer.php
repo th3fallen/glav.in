@@ -1,4 +1,5 @@
-</div><!-- end content -->
+			</div><!-- end admin-content-body -->
+		</div><!-- end admin-content -->
 		<footer>
 			<p>&copy;
 				<?php 
