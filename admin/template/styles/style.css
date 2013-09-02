@@ -179,7 +179,7 @@ a:hover { text-decoration: underline; }
 }
 
 footer { color: #fff; padding: 0 20px; }
-.not_logged_in footer { margin-top: 20px; wtext-align: center; }
+.not_logged_in footer { margin-top: 20px; text-align: center; }
 
 /*////////////////////////////////////////////////////////////////*/
 /* FORM ELEMENTS                                                  */
