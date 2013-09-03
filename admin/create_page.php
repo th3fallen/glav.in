@@ -32,6 +32,7 @@ if($user->is_logged_in('create_page.php'))
 
 		$page_name = $_POST['page_name'];
 		$page_content = $_POST['page_content'];
+		$page_visible = $_POST['page_visible'];
 
 		// Simple Validation
 		if($page_name == '')
@@ -46,7 +47,8 @@ if($user->is_logged_in('create_page.php'))
 
 		$p = array(
 				'page_name'    => $page_name,
-				'page_content' => $page_content
+				'page_content' => $page_content,
+				'page_visible' => $page_visible
 			);
 
 		// If there's no errors create the page
@@ -83,6 +85,13 @@ foreach($errors as $errors)
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<input type="text" placeholder="Page Name" name="page_name" value="<?php echo $page_name ? $page_name : ''; ?>" />
 	<textarea name="page_content" placeholder="Page Content" id="page-content"><?php echo $page_content ? $page_content : ''; ?></textarea>
+	<p>
+		Is this page visible to the public?
+		<select name="page_visible">
+			<option value="true">Yes</option>
+			<option value="false">No</option>
+		</select>
+	</p>
 	<input type="submit" value="Submit">
 </form>
 <?php 

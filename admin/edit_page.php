@@ -45,6 +45,7 @@ if($user->is_logged_in('create_page.php'))
 
 			$page_name = $content['page']['name'];
 			$page_content = $content['page']['content'];
+			$page_visible = $content['page']['visible'];
 		}
 	}
 	else
@@ -57,11 +58,13 @@ if($user->is_logged_in('create_page.php'))
 		$page_file = $_GET['page'];
 		$page_name = $_POST['page_name'];
 		$page_content = $_POST['page_content'];
+		$page_visible = $_POST['page_visible'] == "true" ? true : false;
 
 		$content = array(
 			'page' => array(
 				'name' => $page_name,
-				'content' => $page_content
+				'content' => $page_content,
+				'visible' => $page_visible
 			)				
 		);
 
@@ -93,6 +96,13 @@ if(empty($errors))
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 	<input type="text" placeholder="Page Name" name="page_name" value="<?php echo $page_name ? $page_name : ''; ?>" />
 	<textarea name="page_content" placeholder="Page Content" id="page-content"><?php echo $page_content ? $page_content : ''; ?></textarea>
+	<p>
+		Is this page visible to the public?
+		<select name="page_visible">
+			<option value="true"<?php echo $page_visible ? ' selected="true"' : ''; ?>>Yes</option>
+			<option value="false"<?php echo $page_visible ? '' : ' selected="true"'; ?>>No</option>
+		</select>
+	</p>	
 	<input type="submit" value="Submit">
 </form>
 <?php 

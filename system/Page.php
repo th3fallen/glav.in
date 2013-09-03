@@ -65,10 +65,19 @@ class Page {
 			$page_name = basename($page, '.json');
 
 			if($page_name != '404' && $page_name != 'home') {
-				$list .= '<li>';
-				$list .= '<a href="' . base_url() . $page_name . '">';
-				$list .= ucwords(str_replace('_', ' ', $page_name));
-				$list .= '</a></li>';
+
+				$content = $this->data->get_content(PAGES_DIR . $page_name);
+				$page    = $content['page'];
+
+				// If the page is visible add it to the list.
+				if($page['visible'] === true)
+				{
+					$list .= '<li>';
+					$list .= '<a href="' . base_url() . $page_name . '">';
+					$list .= ucwords(str_replace('_', ' ', $page_name));
+					$list .= '</a></li>';
+				}
+
 			}
 
 		}
@@ -102,6 +111,12 @@ class Page {
 		$template      = $page['template'];
 		$template_path = BASEPATH . '/template/' . $template . '.php';
 
+		// If the page isn't visible, set a message.
+		if($page['visible'] === false)
+		{
+			$page['content'] = 'This page is currently unavailable.';
+		}
+
 		// Make sure template exists
 		if(file_exists($template_path)) 
 		{
@@ -124,6 +139,7 @@ class Page {
 	public function create($p) {
 		$page_name    = $p['page_name'];
 		$page_content = $p['page_content'];
+		$page_visible = $p['page_visible'] == "true" ? true : false; // making boolean
 		$page_created = time();
 		$page_file    = PAGES_DIR . str_replace(' ', '_', strtolower($page_name));
 
@@ -134,7 +150,9 @@ class Page {
 						'created'  => $page_created,
 						
 						// For the time being.
-						'template' => 'page'
+						'template' => 'page',
+
+						'visible'  => $page_visible
 					)
 			);
 
