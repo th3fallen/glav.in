@@ -137,7 +137,7 @@ class Page {
 	 * @return	bool
 	 */
 	public function create($p) {
-		$page_name    = $p['page_name'];
+		$page_name    = trim($p['page_name']);
 		$page_content = $p['page_content'];
 		$page_visible = $p['page_visible'] == "true" ? true : false; // making boolean
 		$page_created = time();

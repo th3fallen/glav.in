@@ -13,9 +13,9 @@
  * @since		1.0.0-alpha
  */
 
-$title  = 'Create Page';
+$title = 'Create Page';
 $errors = array();
-$msgs   = array();
+$msgs = array();
 $page_name = '';
 $page_content = '';
 
@@ -30,7 +30,7 @@ if($user->is_logged_in('create_page.php'))
 	
 	if($_POST) {
 
-		$page_name = $_POST['page_name'];
+		$page_name    = $_POST['page_name'];
 		$page_content = $_POST['page_content'];
 		$page_visible = $_POST['page_visible'];
 
@@ -39,6 +39,13 @@ if($user->is_logged_in('create_page.php'))
 		{
 			$errors[] = 'Page Name cannot be blank';
 		}
+
+		// Check to make sure there isn't already a page
+		// with this name. If so, send error.
+		if($data->file_exist(PAGES_DIR . trim($page_name)))
+		{
+			$errors[] = "A page with this name already exists. Please update the page name.";
+		}		
 
 		if($page_content == '')
 		{
@@ -84,6 +91,9 @@ foreach($errors as $errors)
 ?>
 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<input type="text" placeholder="Page Name" name="page_name" value="<?php echo $page_name ? $page_name : ''; ?>" />
+	<p>
+		<strong>Page Address:</strong> <?php echo base_url(); ?><span id="create-uri"><?php echo $page_name ? strtolower(str_replace(" ", "_", $page_name)) : ''; ?></span>
+	</p>
 	<textarea name="page_content" placeholder="Page Content" id="page-content"><?php echo $page_content ? $page_content : ''; ?></textarea>
 	<p>
 		Is this page visible to the public?

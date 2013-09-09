@@ -62,7 +62,7 @@ if($user->is_logged_in('create_page.php'))
 
 		$content = array(
 			'page' => array(
-				'name' => $page_name,
+				'name' => trim($page_name),
 				'content' => $page_content,
 				'visible' => $page_visible
 			)				
@@ -95,6 +95,9 @@ if(empty($errors))
 ?>
 <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 	<input type="text" placeholder="Page Name" name="page_name" value="<?php echo $page_name ? $page_name : ''; ?>" />
+	<p>
+		<strong>Page Address:</strong> <?php echo base_url(); ?><span id="create-uri"><?php echo $page_name ? strtolower(str_replace(" ", "_", $page_name)) : ''; ?></span>
+	</p>	
 	<textarea name="page_content" placeholder="Page Content" id="page-content"><?php echo $page_content ? $page_content : ''; ?></textarea>
 	<p>
 		Is this page visible to the public?

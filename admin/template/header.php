@@ -18,6 +18,23 @@
 		    window.onload = function() {
 		        CKEDITOR.replace( 'page-content' );
 		    };
+
+		    $(function() {
+
+		    	// When the page_name field is typed into, update
+		    	// the "page address" helper.
+		    	$('input[name="page_name"]').keyup(function() {
+		    		var val = $(this).val(),
+		    			new_val = val.toLowerCase();
+
+		    		if(new_val.slice(-1) != " ") {
+		    			$('#create-uri').text(new_val.replace(/ /g, "_"));	
+		    		}
+		    		
+		    	});	
+
+		    })
+		    
 		</script>		
 	</head>
 <body>
