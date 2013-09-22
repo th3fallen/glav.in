@@ -16,6 +16,7 @@
 $title = 'Install';
 $errors  = array();
 $msgs    = array();
+$login_header = true; 
 
 require_once('config.php');
 require_once(SYSTEM_DIR . 'bootstrap.php');
@@ -53,7 +54,7 @@ if($_POST) {
 
 }
 
-require_once(ADMIN_DIR . '/template/login_header.php');
+require_once(ADMIN_DIR . '/template/header.php');
 ?>
 <div id="login-content">
 	<?php 

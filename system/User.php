@@ -64,16 +64,7 @@ class User {
 			{			
 				$this->start_session($user);
 
-				if($redirect)
-				{
-					$url = $redirect;
-				}
-				else
-				{
-					$url = 'dashboard.php';
-				}
-
-				header('Location:' . $url);					
+				return true;				
 			}
 		}
 
@@ -90,7 +81,7 @@ class User {
 		{
 			// User confirmed. Start session.
 			session_start();
-
+		}
 			// Load session info
 			$_SESSION['user_email'] = $user['email'];
 			$_SESSION['user_level'] = $user['user_level'];
@@ -98,11 +89,7 @@ class User {
 
 			// Adding some randomization
 			$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
-
-			// Regenerate session id
-			session_regenerate_id();					
-		}
-
+			
 	}
 
 	/**
@@ -110,17 +97,12 @@ class User {
 	 */	
 	public function logout() {
 
-		session_start();
+		if(!isset($_SESSION))
+		{
+			session_start();
+		}
 
 		$_SESSION = array();
-
-		if (ini_get("session.use_cookies")) {
-		    $params = session_get_cookie_params();
-		    setcookie(session_name(), '', time() - 42000,
-		        $params["path"], $params["domain"],
-		        $params["secure"], $params["httponly"]
-		    );
-		}
 
 		session_destroy();
 	}	

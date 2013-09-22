@@ -13,25 +13,13 @@
  * @since		1.0.0-alpha
  */
 
-$title  = 'Edit Page';
-$errors = array();
-$msgs   = array();
 $page_name = '';
 $page_content = '';
 
-require_once('../config.php');
-require_once(SYSTEM_DIR . 'bootstrap.php');
-
-// Check to see if the user is logged in
-if($user->is_logged_in('create_page.php'))
-{
-
-	require_once(ADMIN_DIR  . '/template/header.php');
-	
 	// Do we have a page to edit?
-	if(isset($_GET['page']) && $_GET['page'] != '')
+	if(isset($_GET['passed']) && $_GET['passed'] != '')
 	{
-		$page = $_GET['page'];
+		$page = $_GET['passed'];
 
 		// See if the page exists
 		if(!$data->file_exist(PAGES_DIR . $page))
@@ -55,7 +43,7 @@ if($user->is_logged_in('create_page.php'))
 
 	// The form has been submitted
 	if($_POST) {
-		$page_file = $_GET['page'];
+		$page_file = $_GET['passed'];
 		$page_name = $_POST['page_name'];
 		$page_content = $_POST['page_content'];
 		$page_visible = $_POST['page_visible'] == "true" ? true : false;
@@ -70,13 +58,13 @@ if($user->is_logged_in('create_page.php'))
 
 		if($data->update_file(PAGES_DIR . $page_file, $content))
 		{
-			$msgs[] = 'Page Updated. <a href="pages.php" title="Pages">Return to Pages List</a>';
-		}		
-	}
+			$msgs[] = 'Page Updated. <a href="'. base_url() .'admin/pages" title="Pages">Return to Pages List</a>';
+		}
+	}		
 ?>
 <div id="page-description">
-<h1>Edit Page</h1>
-<p>Edit your existing page below.</p>
+	<h1>Edit Page</h1>
+	<p>Edit your existing page below.</p>
 </div><!-- end page-description -->
 <div id="admin-content-body">
 <?php
@@ -108,8 +96,6 @@ if(empty($errors))
 	</p>	
 	<input type="submit" value="Submit">
 </form>
-<?php 
-}
-	require_once(ADMIN_DIR . '/template/footer.php'); 
+<?php
 }
 ?>

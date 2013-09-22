@@ -74,7 +74,7 @@ if(isset($_GET['token']) && isset($_GET['email']))
 				// Look for user
 				if($user->exists($email))
 				{
-					// Add token to user
+					// Update User
 					$content = array(
 						'user' => array(
 							'password' => $password,

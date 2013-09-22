@@ -149,7 +149,8 @@ class Page {
 						'content'  => $page_content,
 						'created'  => $page_created,
 						
-						// For the time being.
+						// For the time being "page" will be the only option.
+						// Eventually users will be able to choose from other templates.
 						'template' => 'page',
 
 						'visible'  => $page_visible

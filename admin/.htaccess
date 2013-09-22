@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+	Options +FollowSymlinks
+	RewriteEngine on
+
+	# Re-route everything execpt for images and the admin directory
+	RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.gif|\.jpeg|\.bmp|\.css|\.js)$
+	#RewriteCond %{REQUEST_URI}  !(install.php)$
+	RewriteCond %{REQUEST_URI}  !/template/
+
+	RewriteRule ^(.*)/(.*)$ index.php?page=$1&passed=$2 [L,QSA]
+
+	RewriteCond %{REQUEST_URI}  !(\.png|\.jpg|\.gif|\.jpeg|\.bmp|\.css|\.js)$
+	RewriteCond %{REQUEST_URI}  !(install.php)$
+	RewriteCond %{REQUEST_URI}  !/template/
+	RewriteRule ^(.*)$ index.php?page=$1 [L,QSA]			
+</IfModule>
