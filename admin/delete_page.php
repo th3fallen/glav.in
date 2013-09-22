@@ -13,67 +13,55 @@
  * @since		1.0.0-alpha
  */
 
-$title  = 'Delete Page';
-$errors = array();
-$msgs   = array();
 $page_name = '';
 $page_content = '';
 
-require_once('../config.php');
-require_once(SYSTEM_DIR . 'bootstrap.php');
-
-// Check to see if the user is logged in
-if($user->is_logged_in('create_page.php'))
+// Do we have a page to edit?
+if(isset($_GET['passed']) && $_GET['passed'] != '')
 {
+	$page = $_GET['passed'];
 
-	require_once(ADMIN_DIR  . '/template/header.php');
-	
-	// Do we have a page to edit?
-	if(isset($_GET['page']) && $_GET['page'] != '')
+	// You can't delete the 404 page or the home page
+	// you stupid or somethin'?
+	if($page == '404' || $page == 'home')
 	{
-		$page = $_GET['page'];
-
-		// You can't delete the 404 page or the home page
-		// you stupid or somethin'?
-		if($page == '404' || $page == 'home')
-		{
-			$errors[] = 'You cannot delete that page. Sorry.';
-		}
-
-		// See if the page exists
-		if(!$data->file_exist(PAGES_DIR . $page))
-		{
-			$errors[] = 'Page Not Found';
-		}
-
-	}
-	else
-	{
-		$errors[] = 'No Page Selected';
+		$errors[] = 'You cannot delete that page. Sorry.';
 	}
 
-	// The form has been submitted
-	if($_POST) {
-	
-		// Are you sure?
-		if($_POST['are_you_sure'] == 'Yes')
-		{
-			$deleted = $data->delete_file(PAGES_DIR . $page);
+	// See if the page exists
+	if(!$data->file_exist(PAGES_DIR . $page))
+	{
+		$errors[] = 'Page Not Found';
+	}
 
-			if($deleted)
-			{
-				$msgs[] = 'Page Deleted. <a href="pages.php" title="Pages">Return to Pages List</a>';
-			}
-			else
-			{
-				$errors[] = 'Page Not Deleted';
-			}
+}
+else
+{
+	$errors[] = 'No Page Selected';
+}
+
+// The form has been submitted
+if($_POST) {
+
+	// Are you sure?
+	if($_POST['are_you_sure'] == 'Yes')
+	{
+		$deleted = $data->delete_file(PAGES_DIR . $page);
+
+		if($deleted)
+		{
+			$msgs[] = 'Page Deleted. <a href="'. base_url() .'admin/pages" title="Pages">Return to Pages List</a>';
 		}
 		else
 		{
-			$errors[] = 'Page Not Deleted. <a href="pages.php" title="Pages">Return to Pages List</a>';
+			$errors[] = 'Page Not Deleted';
 		}
 	}
+	else
+	{
+		$errors[] = 'Page Not Deleted. <a href="'. base_url() .'admin/pages" title="Pages">Return to Pages List</a>';
+	}
+}
 ?>
 <div id="page-description">
 <h1>Delete Page</h1>
@@ -100,8 +88,6 @@ if(empty($msgs) && empty($errors))
 	<input type="submit" name="are_you_sure" value="Yes">
 	<input type="submit" name="are_you_sure" value="Nope">
 </form>
-<?php 
-}
-	require_once(ADMIN_DIR . '/template/footer.php'); 
+<?php
 }
 ?>

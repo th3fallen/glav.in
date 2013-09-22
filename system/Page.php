@@ -137,7 +137,7 @@ class Page {
 	 * @return	bool
 	 */
 	public function create($p) {
-		$page_name    = $p['page_name'];
+		$page_name    = trim($p['page_name']);
 		$page_content = $p['page_content'];
 		$page_visible = $p['page_visible'] == "true" ? true : false; // making boolean
 		$page_created = time();
@@ -149,7 +149,8 @@ class Page {
 						'content'  => $page_content,
 						'created'  => $page_created,
 						
-						// For the time being.
+						// For the time being "page" will be the only option.
+						// Eventually users will be able to choose from other templates.
 						'template' => 'page',
 
 						'visible'  => $page_visible

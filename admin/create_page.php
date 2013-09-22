@@ -13,58 +13,53 @@
  * @since		1.0.0-alpha
  */
 
-$title  = 'Create Page';
-$errors = array();
-$msgs   = array();
 $page_name = '';
 $page_content = '';
-
-require_once('../config.php');
-require_once(SYSTEM_DIR . 'bootstrap.php');
-
-// Check to see if the user is logged in
-if($user->is_logged_in('create_page.php'))
-{
-
-	require_once(ADMIN_DIR  . '/template/header.php');
 	
-	if($_POST) {
+if($_POST) {
 
-		$page_name = $_POST['page_name'];
-		$page_content = $_POST['page_content'];
-		$page_visible = $_POST['page_visible'];
+	$page_name    = $_POST['page_name'];
+	$page_content = $_POST['page_content'];
+	$page_visible = $_POST['page_visible'];
 
-		// Simple Validation
-		if($page_name == '')
-		{
-			$errors[] = 'Page Name cannot be blank';
-		}
-
-		if($page_content == '')
-		{
-			$errors[] = 'Page Content cannot be empty';
-		}
-
-		$p = array(
-				'page_name'    => $page_name,
-				'page_content' => $page_content,
-				'page_visible' => $page_visible
-			);
-
-		// If there's no errors create the page
-		if(empty($errors))
-		{
-			if($page->create($p)) 
-			{
-				$msgs[] = 'Page Created. <a href="pages.php" title="Pages">Return to Pages List</a>';
-			} 
-			else 
-			{
-				$errors[] = 'Something went wrong. The page wasn\'t created.';
-			}
-		}
-
+	// Simple Validation
+	if($page_name == '')
+	{
+		$errors[] = 'Page Name cannot be blank';
 	}
+
+	// Check to make sure there isn't already a page
+	// with this name. If so, send error.
+	if($data->file_exist(PAGES_DIR . trim($page_name)))
+	{
+		$errors[] = "A page with this name already exists. Please update the page name.";
+	}		
+
+	if($page_content == '')
+	{
+		$errors[] = 'Page Content cannot be empty';
+	}
+
+	$p = array(
+			'page_name'    => $page_name,
+			'page_content' => $page_content,
+			'page_visible' => $page_visible
+		);
+
+	// If there's no errors create the page
+	if(empty($errors))
+	{
+		if($page->create($p)) 
+		{
+			$msgs[] = 'Page Created. <a href="'. base_url() .'admin/pages" title="Pages">Return to Pages List</a>';
+		} 
+		else 
+		{
+			$errors[] = 'Something went wrong. The page wasn\'t created.';
+		}
+	}
+
+}
 ?>
 <div id="page-description">
 <h1>Create Page</h1>
@@ -82,8 +77,11 @@ foreach($errors as $errors)
 	echo '<div class="error">' . $errors . '</div>';
 }
 ?>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="post">
 	<input type="text" placeholder="Page Name" name="page_name" value="<?php echo $page_name ? $page_name : ''; ?>" />
+	<p>
+		<strong>Page Address:</strong> <?php echo base_url(); ?><span id="create-uri"><?php echo $page_name ? strtolower(str_replace(" ", "_", $page_name)) : ''; ?></span>
+	</p>
 	<textarea name="page_content" placeholder="Page Content" id="page-content"><?php echo $page_content ? $page_content : ''; ?></textarea>
 	<p>
 		Is this page visible to the public?
@@ -94,7 +92,3 @@ foreach($errors as $errors)
 	</p>
 	<input type="submit" value="Submit">
 </form>
-<?php 
-	require_once(ADMIN_DIR . '/template/footer.php'); 
-}
-?>

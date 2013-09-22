@@ -40,6 +40,10 @@
 	require_once(SYSTEM_DIR . 'User.php');
 	$user = new User($data);
 
+	// Admin
+	require_once(SYSTEM_DIR . 'Admin.php');
+	$admin = new Admin($data, $user);	
+
 /*
  *---------------------------------------------------------------
  * TEMPLATE FUNCTIONS
