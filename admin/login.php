@@ -13,6 +13,8 @@
  * @since		1.0.0-alpha
  */
 
+// Include password class for those using an
+// older version of PHP.
 require_once('../system/password.php');
 
 $logging_in = false;
@@ -22,31 +24,24 @@ if($_POST) {
 	$email     = clean($_POST['email']);
 	$password  = password_hash(clean($_POST['password']), PASSWORD_DEFAULT, $password_options);
 
-	if(isset($_GET['redirect']))
+	if(!$user->validate($email, $password))
 	{
-		$url = $_GET['redirect'];
-	}
-	else
-	{
-		$url = 'pages';
-	}
-
-	if(!$user->validate($email, $password, $url))
-	{
-		$errors[] = 'Invalid Login Information. Need to <a href="reset_password.php" title="Reset Password">reset your password?</a>';
+		$errors[] = 'Invalid Login Information. Need to <a href="reset_password" title="Reset Password">reset your password?</a>';
 	}
 	else
 	{
 		// Once the user has been validated, we need to refresh the page
 		// to redirect to the admin panel.
 		$logging_in = true;
+
 		echo '<meta http-equiv="refresh" content="3; url=pages">';
 	}
 
 }
 ?>
 <div id="login-content">
-<?php	
+<?php
+// Print out any messages or errors
 foreach($msgs as $msg)
 {
 	echo '<div class="msg">' . $msg . '</div>';
@@ -57,6 +52,7 @@ foreach($errors as $error)
 	echo '<div class="error">' . $error . '</div>';
 }
 
+// Should we show the login prompt or are we logging in?
 if(!$logging_in)
 {
 ?>		

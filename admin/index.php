@@ -39,24 +39,26 @@
  * Check to see if the user is logged in. If not, ask them to.
  * After that, figure out where to send them.
  */
-
-	if($user->is_logged_in())
+	if(isset($_GET['page']))
 	{
+		$requested_page = $_GET['page'];
 
-		if(isset($_GET['page']))
+		// Pages that use the "login_header"
+		switch($requested_page) {
+			case 'login':
+			case 'logout':
+			case 'reset_password':
+				$login_header = true;
+				break;
+			default:
+				$login_header = false;
+		}
+	}
+	
+	if($requested_page != 'login' && $requested_page != 'reset_password')
+	{
+		if($user->is_logged_in())
 		{
-			$requested_page = $_GET['page'];
-
-			// Pages that use the "login_header"
-			switch($requested_page) {
-				case 'logout':
-				case 'reset_password':
-					$login_header = true;
-					break;
-				default:
-					$login_header = false;
-			}
-
 			if($requested_page == '')
 			{
 				$include = 'pages.php';
@@ -65,13 +67,16 @@
 			{
 				$include = $requested_page . '.php';
 			}
-			
 		}
-		
+		else
+		{
+			$login_header = true;
+			$include = 'login.php';
+		}
 	}
-	else
+	else 
 	{
-		$include = 'login.php';
+		$include = $requested_page . '.php';	
 	}
 
 	require_once(ADMIN_DIR . '/template/header.php');

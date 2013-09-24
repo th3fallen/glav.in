@@ -12,6 +12,11 @@
  * @link		http://glav.in
  * @since		1.0.0-alpha
  */
+
+// Log the user out
 $user->logout();
+
 ?>
-<div class="msg">You've been logged out. <a href="login.php">Log Back In!</a></div>
+<div class="msg">
+	You've been logged out. <a href="login">Log Back In!</a>
+</div>

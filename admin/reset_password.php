@@ -13,13 +13,8 @@
  * @since		1.0.0-alpha
  */
 
-$title   = 'Reset Password';
-$errors  = array();
-$msgs    = array();
 $updated = false;
 
-require_once('../config.php');
-require_once(SYSTEM_DIR . 'bootstrap.php');
 require_once('../system/password.php');
 require_once('../system/mail.php');
 
@@ -151,8 +146,6 @@ if(($_POST) && !isset($_GET['token'])) {
 	}
 
 }
-
-require_once(ADMIN_DIR . '/template/login_header.php'); 
 ?>
 <div id="login-content">
 	<?php 
@@ -195,5 +188,4 @@ require_once(ADMIN_DIR . '/template/login_header.php');
 		<?php
 		}
 	}
-require_once(ADMIN_DIR . '/template/footer.php');	
 ?>
