@@ -46,7 +46,7 @@ class User {
 	 * @param string redirect url
 	 * @return	bool
 	 */	
-	public function validate($email, $password, $redirect) {
+	public function validate($email, $password) {
 
 		// Make sure user exists
 		if(!$this->exists($email))

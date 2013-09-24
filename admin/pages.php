@@ -14,14 +14,15 @@
  */
 ?>
 <div id="page-description">
-<h1>Pages</h1>
-<p>Below is a list of all of your site's pages. From here you are able to edit and delete existing pages. To create a new page, click the button in the upper right.</p>
-<a href="create_page" title="Create Page" id="create-page-btn" class="btn">Create Page</a>
+	<h1>Pages</h1>
+	<p>Below is a list of all of your site's pages. From here you are able to edit and delete existing pages. To create a new page, click the button in the upper right.</p>
+	<a href="create_page" title="Create Page" id="create-page-btn" class="btn">Create Page</a>
 </div><!-- end page-description -->
 <div id="admin-content-body">
 	<ul id="admin-pages-list">
 		<?php
 			
+			// Get all of the pages
 			$pages = $page->get_pages();
 
 			// Put home first
