@@ -14,7 +14,7 @@
  */
 
 
-if ( ! function_exists('base_url'))
+if (!function_exists('base_url'))
 {
 	/**
 	 * Returns the site's base url

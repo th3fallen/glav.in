@@ -17,6 +17,5 @@ if(!function_exists('pages_list'))
 		// user-friendly way to get an unordered list
 		// of the site's navigation.
 		return $page->pages_list($id);
-
 	}
 }
