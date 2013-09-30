@@ -23,7 +23,6 @@ class User {
 	 */
 	function __construct($data) {
 		$this->data = $data;
-		
 	}
 
 	/**
@@ -82,13 +81,14 @@ class User {
 			// User confirmed. Start session.
 			session_start();
 		}
-			// Load session info
-			$_SESSION['user_email'] = $user['email'];
-			$_SESSION['user_level'] = $user['user_level'];
-			$_SESSION['time_logged_in'] = time();
 
-			// Adding some randomization
-			$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+		// Load session info
+		$_SESSION['user_email'] = $user['email'];
+		$_SESSION['user_level'] = $user['user_level'];
+		$_SESSION['time_logged_in'] = time();
+
+		// Adding some randomization
+		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 			
 	}
 
