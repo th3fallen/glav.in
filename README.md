@@ -29,9 +29,9 @@ Contribute!
 You want to contribute?!? That's awesome! Let's make Glav.in great! Here are some ways you (yes, you!) can help:
 
 *Contribute Code
-    *Fork Glav.in
-    *Create a branch containing each change/addition/improvement you'd like to make.
-    *Send a pull request from that branch.
+   *Fork Glav.in
+   *Create a branch containing each change/addition/improvement you'd like to make.
+   *Send a pull request from that branch.
 *Post bug reports, ideas, suggestions, etc to the Issue Tracker
 
 
