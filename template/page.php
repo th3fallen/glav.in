@@ -59,12 +59,5 @@
         <script>window.jQuery || document.write('<script src="template/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
         <script src="template/js/main.js"></script>
-
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
     </body>
 </html>
