@@ -1,7 +1,7 @@
 Glav.in
 =======
 
-The goal of Glav.in is to provide the most simplistic CMS experience possible. It is **not** intended for large, multifaceted websites - it just ain't got the juice. Glav.in is for simple, informational websites. Maybe a site for a local barber shop? Perhaps even a site for your cat?
+The goal of Glav.in is to provide the simplest CMS experience possible. It is **not** intended for large, multifaceted websites - it just ain't got the juice. Glav.in is for simple, informational websites. Maybe a site for a local barber shop? Perhaps even a site for your cat?
 
 Features
 ========
