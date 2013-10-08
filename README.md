@@ -40,7 +40,7 @@ Notes
 =====
 
 * This project is in the **VERY** early stages. Do not use this on a production site.
-* I would absolutely love input and contributions. All advice/thoughts/ideas/criticisms are welcome. Send any email to glavincms@gmail.com
+* All advice/thoughts/ideas/criticisms are welcome. Join the developer forum [GlavinCMS](https://groups.google.com/forum/#!forum/glavincms)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mattsparks/glav.in/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
