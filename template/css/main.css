@@ -77,6 +77,12 @@ body {
     border-bottom: 20px solid #111B22;
 }
 
+.footer-container {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
 .footer-container,
 .main aside {
     border-top: 20px solid #111B22;
