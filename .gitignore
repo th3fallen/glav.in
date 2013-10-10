@@ -36,6 +36,12 @@
 ehthumbs.db
 Thumbs.db
 
+# Composer & Unit Testing #
+###########################
+vendor/
+composer.phar
+composer.lock
+
 * Random #
 ##########
 _*.php
