@@ -50,6 +50,7 @@
 				<nav id="admin-nav">
 					<ul>
 						<li><a href="<?php echo base_url(); ?>admin/pages" title="Pages">Pages</a></li>
+						<li><a href="<?php echo base_url(); ?>admin/users" title="Users">Users</a></li>
 						<?php /* <li><a href="#" title="Settings">Settings</a></li> */ ?>
 						<li><a href="<?php echo base_url(); ?>admin/logout" title="Logout">Logout</a></li>
 					</ul>

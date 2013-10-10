@@ -15,7 +15,6 @@
 
     defined('BASEPATH') OR exit('No direct script access allowed');
 
-    require_once(SYSTEM_DIR . 'password.php');
 
     class User
         {
@@ -193,6 +192,23 @@
 
                     }
 
+                }
+
+        /**
+         * Get Users
+         *
+         * @return    array of all users with full path
+         */
+            public function get_users()
+                {
+
+                    $users = array();
+
+                    foreach (glob(USERS_DIR . "*.json") as $user) {
+                        $users[] = $user;
+                    }
+
+                    return $users;
                 }
 
         }
