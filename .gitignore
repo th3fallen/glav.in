@@ -38,7 +38,7 @@ Thumbs.db
 
 # Composer & Unit Testing #
 ###########################
-vendor/
+vendor
 composer.phar
 composer.lock
 

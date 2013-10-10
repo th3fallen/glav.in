@@ -1,5 +1,9 @@
 {
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
+    },
+    "require": {
+        "swiftmailer/swiftmailer": "dev-master",
+        "ircmaxell/password-compat": "dev-master"
     }
 }
