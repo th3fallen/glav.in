@@ -15,16 +15,64 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once( SYSTEM_DIR . 'password.php');
+
 class User {
 
 
 	/**
 	 * Construct
 	 */
-	function __construct($data) {
+	function __construct($data, $password_options) {
 		$this->data = $data;
-		
+		$this->password_options = $password_options;
 	}
+
+
+	/**
+	 * Create
+	 *
+	 * @param string user's email address
+	 * @param string user's password
+	 * @param string user's user level
+	 * @return	bool
+	 */	
+	public function create( $email, $password, $user_level ) {
+
+		// Check to see if the user already exists
+		if( $this->data->file_exist( USERS_DIR . $email ) ) {
+			return false;
+		} else {
+			$user = array(
+				'user' => array(
+					'email' => $email,
+					'password' => password_hash( $password, PASSWORD_BCRYPT, $this->password_options ),
+					'user_level' => $user_level,
+					'token'	=> ''
+				)
+			);
+
+			$added = $this->data->create_file( 'data/users/'.$email, $user );
+
+			return $added ? true : false;	
+		}
+	}
+
+	/**
+	 * Delete
+	 *
+	 * @param string user's email address
+	 * @return	bool
+	 */
+	 public function delete( $email ) {
+
+	 	if( $this->exists( $email ) ) {
+	 		return $this->data->delete_file( USERS_DIR . $email );	
+	 	} else {
+	 		return false;
+	 	}
+
+	 }		
 
 	/**
 	 * Exist
@@ -82,13 +130,13 @@ class User {
 			// User confirmed. Start session.
 			session_start();
 		}
-			// Load session info
-			$_SESSION['user_email'] = $user['email'];
-			$_SESSION['user_level'] = $user['user_level'];
-			$_SESSION['time_logged_in'] = time();
-
-			// Adding some randomization
-			$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
+		
+		// Load session info
+		$_SESSION['user_email']     = $user['email'];
+		$_SESSION['user_level']     = $user['user_level'];
+		$_SESSION['time_logged_in'] = time();
+		// Adding some randomization
+		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 			
 	}
 

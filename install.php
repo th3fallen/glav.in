@@ -17,57 +17,49 @@ $title = 'Install';
 $errors = array();
 $msgs = array();
 $login_header = true;
+$created = false;
 
 require_once('config.php');
 require_once(SYSTEM_DIR . 'bootstrap.php');
-require_once('system/password.php');
 
-if($_POST) {
+if( $_POST ) {
 
-	if(($_POST['admin_email_address'] == '') || ($_POST['admin_password'] == ''))
-	{
+	if( ( $_POST['admin_email_address'] == '' ) || ( $_POST['admin_password'] == '' ) ) {
 		$errors[] = "Fields Cannot Be Empty";
 	}
 
-	if(empty($errors))
-	{
+	if( empty( $errors ) ) {
 		$email = $_POST['admin_email_address'];
-		$password = password_hash($_POST['admin_password'], PASSWORD_BCRYPT, $password_options);
+		$password = $_POST['admin_password'];
 		$user_level = 1;
 
-		$user = array(
-			'user' => array(
-			'email' => $email,
-			'password' => $password,
-			'user_level' => $user_level,
-			'token'	=> ''
-			)
-		);
+		$created = $user->create( $email, $password, $user_level );
 
-		$added = $data->create_file('data/users/'.$email, $user);
-
-		if($added) 
-		{
-			unlink(realpath(__FILE__));
-			header('Location: index.php');
+		if( $created ) {
+			$msgs[] = 'User created! <a href="' . base_url() . 'admin/" title="Login">Go Login!</a>';
+			unlink( realpath( __FILE__ ) );
+		} else {
+			$errors[] = 'User not created';
 		}
 	}
 
 }
 
-require_once(ADMIN_DIR . '/template/header.php');
+require_once( ADMIN_DIR . '/template/header.php' );
 ?>
 <div id="login-content">
 	<?php
-	foreach($msgs as $msg)
+	foreach( $msgs as $msg )
 	{
 		echo '<div class="msg">' . $msg . '</div>';
 	}
 
-	foreach($errors as $errors)
+	foreach( $errors as $errors )
 	{
 		echo '<div class="error">' . $errors . '</div>';
 	}
+
+	if( !$created ) {
 	?>
 	<p>Thanks for installing Glav.in! Please create an admin account.</p>
 	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -76,5 +68,7 @@ require_once(ADMIN_DIR . '/template/header.php');
 	<input type="submit" value="Submit" />
 	</form>
 <?php
-require_once(ADMIN_DIR . '/template/footer.php');
+	}
+
+require_once( ADMIN_DIR . '/template/footer.php' );
 ?>

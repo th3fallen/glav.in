@@ -38,7 +38,7 @@
 
 	// User
 	require_once(SYSTEM_DIR . 'User.php');
-	$user = new User($data);
+	$user = new User($data, $password_options);
 
 	// Admin
 	require_once(SYSTEM_DIR . 'Admin.php');
