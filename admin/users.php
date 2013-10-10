@@ -14,7 +14,7 @@
      */
 ?>
 <div id="page-description">
-    <h1>Pages</h1>
+    <h1>Users</h1>
 
     <p>Below is a list of all of your site's users. From here you are able to edit and delete existing pages. To create
        a new page, click the button in the upper right.</p>
